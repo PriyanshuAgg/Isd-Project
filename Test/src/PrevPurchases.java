@@ -39,11 +39,11 @@ public class PrevPurchases extends JFrame {
 	 */
 	public PrevPurchases() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 450);
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 41, 426, 136);
+		scrollPane.setBounds(12, 47, 576, 228);
 		getContentPane().add(scrollPane);
 		Object rowData[][] = { { 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" },
 		        { 2, "<html><a href=\"\">abs </a></html>", "3rd Nov 2018", "Completed" },
@@ -67,7 +67,11 @@ public class PrevPurchases extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(163, 218, 117, 25);
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnBack.setBounds(261, 329, 117, 25);
 		getContentPane().add(btnBack);
 	}
 }

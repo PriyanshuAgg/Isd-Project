@@ -16,6 +16,7 @@ public class AppStatus extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -80,14 +81,18 @@ public class AppStatus extends JFrame {
 	        { 2, "<html><a href=\"\">bca </a></html>", "3rd Nov 2018", "Approved" },
 	        {3, "<html><a href=\"\">abc </a></html>", "4th Nov 2018", "Not Approved"}};
 	    Object columnNames[] = { "Id", "Purchase Title", "Date of Submission", "Status" };
-	    JTable table = new JTable(rowData, columnNames);
-
-	    JScrollPane scrollPane = new JScrollPane(table);
-	    frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 	    frame.setSize(600, 450);
+	    frame.getContentPane().setLayout(null);
+	    
+	    JScrollPane scrollPane = new JScrollPane();
+	    scrollPane.setBounds(12, 43, 576, 182);
+	    frame.getContentPane().add(scrollPane);
+	    
+	    JTable table = new JTable(rowData,columnNames);
+	    scrollPane.setViewportView(table);
 	    frame.setVisible(true);
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	setBounds(100, 100, 450, 300);
+	setBounds(100, 100, 600, 450);
 	contentPane = new JPanel();
 	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 	contentPane.setLayout(new BorderLayout(0, 0));
@@ -103,11 +108,4 @@ public class AppStatus extends JFrame {
 	);
 	contentPane.setLayout(gl_contentPane);
 }
-	
-
-	/**
-	 * Create the frame.
-	 */
-	
-
 }

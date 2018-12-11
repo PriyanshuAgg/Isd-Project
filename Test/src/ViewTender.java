@@ -35,11 +35,11 @@ public class ViewTender extends JFrame {
 	public ViewTender() {
 		this.setTitle("View all Tenders");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 450);
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 41, 426, 136);
+		scrollPane.setBounds(12, 41, 576, 220);
 		getContentPane().add(scrollPane);
 		Object rowData[][] = { { 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "2nd Dec 2018" }};
 		        Object columnNames[] = { "Id", "Tender Title", "Date of Issue", "Last date for quotation submission" };
@@ -60,7 +60,7 @@ public class ViewTender extends JFrame {
 	}});
 		table.setEnabled(false);
 		JButton back = new JButton("Back");
-		back.setBounds(163, 218, 117, 25);
+		back.setBounds(257, 331, 117, 25);
 		getContentPane().add(back);
 	}
 

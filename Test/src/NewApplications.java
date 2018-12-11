@@ -34,18 +34,18 @@ public class NewApplications extends JFrame {
 	public NewApplications() {
 		this.setTitle("New Applications");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 12, 426, 199);
+		scrollPane.setBounds(12, 12, 544, 214);
 		contentPane.add(scrollPane);
-		Object rowData[][] = { { 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" },
-		        { 2, "<html><a href=\"\">abs </a></html>", "3rd Nov 2018", "Completed" },
-		        {3, "<html><a href=\"\">bca </a></html>", "4th Nov 2018", "Rejected"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" },{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" },{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" },{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" },{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" }};
+		Object rowData[][] = { { 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},
+		        { 2, "<html><a href=\"\">abs </a></html>", "3rd Nov 2018" },
+		        {3, "<html><a href=\"\">bca </a></html>", "4th Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"}};
 		    Object columnNames[] = { "Id", "Purchase Title", "Intender"};
 		JTable table = new JTable(rowData,columnNames);
 //		table.addMouseListener(new java.awt.event.MouseAdapter()

@@ -39,7 +39,7 @@ public class welcome_purchasecomm extends JFrame {
 	public welcome_purchasecomm(String username) {
 		this.setTitle("Welcome Purchase Committe");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 450);
 		JPanel panel = new JPanel();
 		
 		JLabel lblWelcomePurchaseCommitte = new JLabel("Welcome "+username);
@@ -94,12 +94,13 @@ public class welcome_purchasecomm extends JFrame {
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
-						.addComponent(panel_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
-					.addContainerGap())
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(panel, GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+							.addContainerGap())))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -107,23 +108,19 @@ public class welcome_purchasecomm extends JFrame {
 					.addGap(28)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
-					.addGap(46))
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 223, GroupLayout.PREFERRED_SIZE)
+					.addGap(125))
 		);
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
+				.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
 					.addGap(100)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
-							.addGap(103))
-						.addGroup(gl_panel_1.createSequentialGroup()
-							.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-								.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnNewButton_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addGap(110))))
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
+						.addComponent(btnNewButton_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+						.addComponent(btnNewButton_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+						.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
+					.addGap(103))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -134,7 +131,7 @@ public class welcome_purchasecomm extends JFrame {
 					.addComponent(btnNewButton_2)
 					.addGap(18)
 					.addComponent(btnNewButton_1)
-					.addContainerGap(36, Short.MAX_VALUE))
+					.addContainerGap(107, Short.MAX_VALUE))
 		);
 		panel_1.setLayout(gl_panel_1);
 		getContentPane().setLayout(groupLayout);

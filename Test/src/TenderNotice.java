@@ -34,11 +34,11 @@ public class TenderNotice extends JFrame {
 	public TenderNotice() {
 		this.setTitle("Tender Notice");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 650, 450);
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 41, 426, 136);
+		scrollPane.setBounds(12, 41, 614, 203);
 		getContentPane().add(scrollPane);
 		String rowData[][] = { { "xyz", "xyz", "xyz", "1040", " ", " " },
 		        { "abc", "yxz", "xyz", "2020", " ", " " },
@@ -62,7 +62,7 @@ public class TenderNotice extends JFrame {
 	}});
 		table.setEnabled(false);
 		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(163, 218, 117, 25);
+		btnBack.setBounds(286, 335, 117, 25);
 		getContentPane().add(btnBack);
 		
 	}

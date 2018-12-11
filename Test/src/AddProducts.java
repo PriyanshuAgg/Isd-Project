@@ -114,7 +114,7 @@ public class AddProducts extends JFrame {
 		contentPane.add(lblPreferedSpecifications);
 		
 		pref_specs = new JTextField();
-		pref_specs.setBounds(292, 285, 215, 51);
+		pref_specs.setBounds(292, 285, 225, 51);
 		contentPane.add(pref_specs);
 		pref_specs.setColumns(10);
 	}

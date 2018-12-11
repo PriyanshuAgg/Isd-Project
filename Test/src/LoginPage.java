@@ -54,44 +54,44 @@ public class LoginPage {
 	 */
 	private void initialize() {
 		frame = new JFrame("Login");
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 600, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblUsername = new JLabel("Username:");
-		lblUsername.setBounds(23, 52, 134, 28);
+		lblUsername.setBounds(44, 93, 134, 28);
 		
 		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(23, 105, 134, 37);
+		lblPassword.setBounds(44, 138, 134, 37);
 		
 		username = new JTextField();
-		username.setBounds(158, 57, 225, 19);
+		username.setBounds(275, 98, 225, 19);
 		username.setColumns(10);
 		
 		lblLoginAs = new JLabel("Login As");
-		lblLoginAs.setBounds(179, 145, 60, 15);
+		lblLoginAs.setBounds(275, 218, 60, 15);
 		
 		rdbtnPurchaseComm = new JRadioButton("Purchase Comm.");
-		rdbtnPurchaseComm.setBounds(50, 168, 142, 23);
+		rdbtnPurchaseComm.setBounds(58, 253, 142, 23);
 		
 		rdbtnIntendor = new JRadioButton("Intendor");
-		rdbtnIntendor.setBounds(300, 168, 86, 23);
+		rdbtnIntendor.setBounds(452, 253, 86, 23);
 		
 		ButtonGroup group = new ButtonGroup();
 		group.add(rdbtnPurchaseComm);
 		group.add(rdbtnIntendor);
 		
 		JLabel tend = new JLabel("");
-		tend.setBounds(301, 242, 125, 15);
+		tend.setBounds(463, 355, 125, 15);
 		tend.setText("<html><a href=\"\">View Tenders... </a></html>");
         tend.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		frame.getContentPane().add(tend);
 		
 		lblPurchaseManagement = new JLabel("Purchase Management");
-		lblPurchaseManagement.setBounds(137, 30, 205, 15);
+		lblPurchaseManagement.setBounds(233, 30, 205, 15);
 		frame.getContentPane().add(lblPurchaseManagement);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(158, 114, 225, 19);
+		passwordField.setBounds(275, 147, 225, 19);
 		passwordField.setEditable(false);
 		frame.getContentPane().add(passwordField);
 		
@@ -112,7 +112,7 @@ public class LoginPage {
 				frame.setVisible(false);
 			}
 		});
-		btnSubmit.setBounds(170, 209, 100, 25);
+		btnSubmit.setBounds(270, 299, 100, 25);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(lblUsername);
 		frame.getContentPane().add(username);
