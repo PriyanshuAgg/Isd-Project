@@ -49,28 +49,35 @@ public class welcomePageIntender extends JFrame {
 			}
 		});
 		
-		JButton bgt_stat = new JButton("Show Budget Status");
-		
 		JButton log_out = new JButton("Log Out");
+		
+		JLabel lblBudgetRemaining = new JLabel("Budget Remaining");
+		
+		JLabel lblBudget = new JLabel("Budget");
 		
 		
 		GroupLayout gl_pur_req = new GroupLayout(pur_req);
 		gl_pur_req.setHorizontalGroup(
-			gl_pur_req.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_pur_req.createSequentialGroup()
+			gl_pur_req.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_pur_req.createSequentialGroup()
 					.addGap(7)
 					.addComponent(lblWelcomeUser, GroupLayout.PREFERRED_SIZE, 203, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 283, Short.MAX_VALUE)
 					.addComponent(log_out, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 					.addGap(7))
-				.addGroup(Alignment.TRAILING, gl_pur_req.createSequentialGroup()
+				.addGroup(gl_pur_req.createSequentialGroup()
 					.addGap(73)
 					.addGroup(gl_pur_req.createParallelGroup(Alignment.TRAILING)
-						.addComponent(bgt_stat, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
 						.addComponent(app_stat, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
 						.addComponent(prev_pur, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
 						.addComponent(pur_rqst, GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE))
 					.addGap(36))
+				.addGroup(Alignment.LEADING, gl_pur_req.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblBudgetRemaining, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+					.addGap(82)
+					.addComponent(lblBudget, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(200, Short.MAX_VALUE))
 		);
 		gl_pur_req.setVerticalGroup(
 			gl_pur_req.createParallelGroup(Alignment.LEADING)
@@ -81,15 +88,17 @@ public class welcomePageIntender extends JFrame {
 						.addGroup(gl_pur_req.createSequentialGroup()
 							.addGap(5)
 							.addComponent(lblWelcomeUser)))
-					.addGap(93)
+					.addGap(33)
+					.addGroup(gl_pur_req.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblBudgetRemaining)
+						.addComponent(lblBudget))
+					.addGap(45)
 					.addComponent(pur_rqst, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(prev_pur, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(app_stat, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(bgt_stat, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(154, Short.MAX_VALUE))
+					.addContainerGap(197, Short.MAX_VALUE))
 		);
 		pur_req.setLayout(gl_pur_req);
 	}

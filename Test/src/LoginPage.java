@@ -84,6 +84,15 @@ public class LoginPage {
 		tend.setBounds(463, 355, 125, 15);
 		tend.setText("<html><a href=\"\">View Tenders... </a></html>");
         tend.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        tend.addMouseListener(new java.awt.event.MouseAdapter()
+
+        {
+
+		public void mouseClicked(java.awt.event.MouseEvent e)
+		{ 
+			TenderCategory catg =new TenderCategory();
+			catg.setVisible(true);
+		}});
 		frame.getContentPane().add(tend);
 		
 		lblPurchaseManagement = new JLabel("Purchase Management");
