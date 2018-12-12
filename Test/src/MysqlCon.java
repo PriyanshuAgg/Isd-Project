@@ -7,7 +7,7 @@ class MysqlCon{
 //		Statement stmt = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");			
-			con=DriverManager.getConnection("jdbc:mysql://localhost/Purchase","root","16ucs142");
+			con=DriverManager.getConnection("jdbc:mysql://localhost/Purchase","root","password");
 //			stmt=con.createStatement();
 			System.out.println("Connection Succesful");
 //			ResultSet rs=stmt.executeQuery("select * from user");
