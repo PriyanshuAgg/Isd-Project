@@ -33,7 +33,7 @@ public class NewApplications extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 12, 544, 214);
+		scrollPane.setBounds(12, 22, 544, 214);
 		contentPane.add(scrollPane);
 	    Object columnNames[] = { "Id", "Purchase Title", "Intender"};
 	    DefaultTableModel model = new DefaultTableModel(columnNames,0); 

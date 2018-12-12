@@ -3,6 +3,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.sql.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 @SuppressWarnings("serial")
@@ -13,7 +15,7 @@ public class ViewTender extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 450);
 		getContentPane().setLayout(null);
-		
+		ViewTender that = this;
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 41, 576, 220);
 		getContentPane().add(scrollPane);
@@ -34,6 +36,11 @@ public class ViewTender extends JFrame {
 			}});
 		table.setEnabled(false);
 		JButton back = new JButton("Back");
+		back.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			that.dispose();
+			}
+		});
 		back.setBounds(257, 331, 117, 25);
 		getContentPane().add(back);
 	}

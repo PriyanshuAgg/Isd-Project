@@ -85,7 +85,8 @@ public class PurchaseReq extends JFrame {
 		JButton btnNewButton = new JButton("Back");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				that.setVisible(false);
+				//that.setVisible(false);
+				that.dispose();
 			}
 		});
 		
@@ -111,10 +112,6 @@ public class PurchaseReq extends JFrame {
 					.addContainerGap(249, Short.MAX_VALUE)
 					.addComponent(btnAddProducts, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)
 					.addGap(204))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
-					.addContainerGap())
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
@@ -142,6 +139,9 @@ public class PurchaseReq extends JFrame {
 					.addGap(32)
 					.addComponent(lblDasas)
 					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+					.addGap(24))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

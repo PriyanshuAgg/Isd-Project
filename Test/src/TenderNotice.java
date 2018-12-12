@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TenderNotice extends JFrame {
 
@@ -36,7 +38,7 @@ public class TenderNotice extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 450);
 		getContentPane().setLayout(null);
-		
+		TenderNotice that =this;
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 41, 614, 203);
 		getContentPane().add(scrollPane);
@@ -62,6 +64,11 @@ public class TenderNotice extends JFrame {
 		}});
 		table.setEnabled(false);
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				that.dispose();
+			}
+		});
 		btnBack.setBounds(286, 335, 117, 25);
 		getContentPane().add(btnBack);
 		

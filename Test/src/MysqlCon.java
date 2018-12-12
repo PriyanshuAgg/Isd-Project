@@ -15,7 +15,10 @@ class MysqlCon{
 //				System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
 //			con.close();
 			}
-		catch(Exception e){ e.printStackTrace();}
+		catch(Exception e)
+		{ 
+			e.printStackTrace();
+			}
 		return con;
 		
 	}

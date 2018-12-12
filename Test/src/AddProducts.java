@@ -77,7 +77,7 @@ public class AddProducts extends JFrame {
 		clr = new JButton("Back");
 		clr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				that.setVisible(false);
+				that.dispose();
 			}
 		});
 		clr.setBounds(392, 385, 117, 25);

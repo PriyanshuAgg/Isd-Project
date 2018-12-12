@@ -6,6 +6,9 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PreviousApplications extends JFrame {
 
@@ -39,7 +42,7 @@ public class PreviousApplications extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		PreviousApplications that =this;
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 43, 576, 226);
 		contentPane.add(scrollPane);
@@ -49,6 +52,15 @@ public class PreviousApplications extends JFrame {
 		    Object columnNames[] = { "Id", "Purchase Title", "Intender","Status"};
 		JTable table = new JTable(rowData,columnNames);
 		scrollPane.setViewportView(table);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				that.dispose();
+			}
+		});
+		btnBack.setBounds(254, 349, 117, 25);
+		contentPane.add(btnBack);
 	}
 
 }
