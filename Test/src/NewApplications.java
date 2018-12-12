@@ -54,14 +54,16 @@ public class NewApplications extends JFrame {
 			e.printStackTrace();
 		}
 		table.addMouseListener(new java.awt.event.MouseAdapter()
-		{
+		{																
 			public void mouseClicked(java.awt.event.MouseEvent e)
 			{
 				int row=table.rowAtPoint(e.getPoint());
 				System.out.println("The Row selected is : "+row);
 				int col= table.columnAtPoint(e.getPoint());
 				if (col==1) {
-					int intn_id  = (int)model.getValueAt(row, col);
+					//int intn_id  = (int)model.getValueAt(row, col);
+					ViewAppPurchase vap =  new ViewAppPurchase();
+					vap.setVisible(true);
 				}
 			}
 		}
