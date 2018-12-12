@@ -28,9 +28,6 @@ public class PrevPurchases extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 47, 576, 228);
 		getContentPane().add(scrollPane);
-//		Object rowData[][] = { { 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" },
-//		        { 2, "<html><a href=\"\">abs </a></html>", "3rd Nov 2018", "Completed" },
-//		        {3, "<html><a href=\"\">bca </a></html>", "4th Nov 2018", "Rejected"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" },{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" },{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" },{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" },{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Completed" }};
 		Object columnNames[] = { "Id", "Purchase Title", "Date of Purchase", "Status" };
 		DefaultTableModel model = new DefaultTableModel(columnNames,0); 
 		JTable table = new JTable(model); 

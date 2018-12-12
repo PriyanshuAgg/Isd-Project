@@ -11,7 +11,7 @@ public class PurchReqCont {
 		try {
 			appl.setID(1);
 			Statement stmt = con.createStatement();
-			stmt.executeUpdate("insert into application value("+appl.getID()+","+intn.getId()+",'"+appl.getTitle()+"','"+appl.getStatus()+"',' ','"+appl.getDate()+"','"+appl.getDesc()+"');");
+			stmt.executeUpdate("insert into application value("+appl.getID()+","+intn.getId()+",'"+appl.getTitle()+"','"+appl.getStatus()+"',' ','"+appl.getDate()+"','"+appl.getDesc()+"','Electrical');");
 			System.out.println("Application added");
 			for(int i=0;i<P.size();i++) {
 				System.out.print("inside for of product ");

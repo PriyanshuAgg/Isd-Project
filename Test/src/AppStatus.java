@@ -1,5 +1,12 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.GroupLayout;
 import javax.swing.JFrame;
@@ -8,31 +15,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class AppStatus extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTable table;
-
-	/**
-	 * Launch the application.
-	 */public static void main(String[] args) {
-			EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					try {
-						AppStatus frame = new AppStatus();
-						frame.setVisible(true);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			});
-		}
-	public AppStatus() {
+	
+	public AppStatus(Intender intn) {
+		AppStatus that = this;
+		
 		this.setTitle("Application Status");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 450);
@@ -40,16 +33,62 @@ public class AppStatus extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		//OngoingApplications that = this;
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 37, 576, 215);
-		contentPane.add(scrollPane);
-		Object rowData[][] = { { 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018", "Approved" },
-		        { 2, "<html><a href=\"\">bca </a></html>", "3rd Nov 2018", "Approved" },
-		        {3, "<html><a href=\"\">abc </a></html>", "4th Nov 2018", "Not Approved"}};
-		    Object columnNames[] = { "Id", "Purchase Title", "Date of Submission", "Status" };
 		
-		JTable table = new JTable(rowData,columnNames);
+		MysqlCon sql = new MysqlCon();
+		Connection con = sql.Con();
+		ArrayList<Application> appl = new ArrayList<Application>();		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(12, 12, 576, 215);
+		contentPane.add(scrollPane);
+		Object columnNames[] = { "Id", "Purchase Title", "Date of Submission", "Status" };
+		DefaultTableModel model = new DefaultTableModel(columnNames,0); 
+		JTable table = new JTable(model); 
 		scrollPane.setViewportView(table);
-}
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				that.dispose();;
+			}});
+		btnBack.setBounds(236, 239, 114, 25);
+		contentPane.add(btnBack);
+		
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from application where intender_id="+intn.getId()+" and status ='New';");
+			System.out.println("Showing previous application of "+intn.getName());
+			
+			while(rs.next()) {
+				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getDate(),a.getStatus()});
+				appl.add(a);
+			}
+			rs = stmt.executeQuery("select * from application where intender_id="+intn.getId()+" and status ='Ongoing';");
+			System.out.println("Showing previous application of "+intn.getName());
+			
+			while(rs.next()) {
+				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getDate(),a.getStatus()});
+				appl.add(a);
+			}
+
+		} catch (SQLException e1) {
+
+			e1.printStackTrace();
+		}
+		table.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+			public void mouseClicked(java.awt.event.MouseEvent e)
+			{
+			int row=table.rowAtPoint(e.getPoint());
+				System.out.println("The Row selected is : "+row);
+				int col= table.columnAtPoint(e.getPoint());
+				if(col==1) {
+					ViewApplication viewapp = new ViewApplication(appl.get(row));
+					viewapp.setVisible(true);
+				}
+			}
+		});
+		table.setEnabled(false);
+	}
 }
