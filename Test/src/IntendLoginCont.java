@@ -15,6 +15,7 @@ public class IntendLoginCont {
 		ResultSet rs;
 		try {
 			Statement stmt = conn.createStatement();
+			System.out.println(username);
 			rs = stmt.executeQuery("select * from user where username='"+username+"' and type='intender';");
 			System.out.println("In intender");
 			if(rs.first()) {

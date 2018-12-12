@@ -1,6 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,6 +7,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class AddProducts extends JFrame {
 
 	private JPanel contentPane;
@@ -28,7 +26,6 @@ public class AddProducts extends JFrame {
 	private JTextField req_specs;
 	private JLabel lblPreferedSpecifications;
 	private JTextField pref_specs;
-	private Product p;
 
 	public AddProducts() {
 
@@ -71,7 +68,6 @@ public class AddProducts extends JFrame {
 		submit = new JButton("Submit");
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				p = new Product(name.getText(),desc.getText(),rsn_purch.getText(),Float.valueOf(cost.getText()),req_specs.getText(),pref_specs.getText());
 				that.setVisible(false);
 			}
 		});

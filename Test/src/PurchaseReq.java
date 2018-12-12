@@ -1,14 +1,10 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.GroupLayout;
@@ -20,9 +16,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 
+@SuppressWarnings("serial")
 public class PurchaseReq extends JFrame {
 
-	private JPanel contentPane;
 	private JTextField p_title;
 	private ArrayList<Product> p = new ArrayList<Product>()  ;
 
@@ -76,9 +72,9 @@ public class PurchaseReq extends JFrame {
 						System.out.println(p);
 					}
 				});
-				
 			}
 		});
+		JTextPane textPane = new JTextPane();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate localDate = LocalDate.now();
 		JLabel lblDasas = new JLabel(dtf.format(localDate));
@@ -88,7 +84,7 @@ public class PurchaseReq extends JFrame {
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Application appl = new Application(1, p_title.getText(), "Created", "New", intn.getId(),localDate);
+				Application appl = new Application(1, p_title.getText(), "Created", "New", intn.getId(),dtf.format(localDate),textPane.getText());
 				new PurchReqCont(intn,p,appl);
 				that.setVisible(false);
 			}
@@ -108,7 +104,7 @@ public class PurchaseReq extends JFrame {
 		
 		JLabel lblDescription = new JLabel("Description");
 		
-		JTextPane textPane = new JTextPane();
+		
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(

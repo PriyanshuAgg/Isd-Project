@@ -1,4 +1,4 @@
-import java.time.LocalDate;
+
 
 public class Application {
 
@@ -7,9 +7,10 @@ public class Application {
 	private String status;
 	private String remarks;
 	private int intender_id;
-	private LocalDate date;
+	private String date;
+	private String desc;
 	
-	public Application(int iD, String title, String status, String remarks, int intender_id,LocalDate date) {
+	public Application(int iD, String title, String status, String remarks, int intender_id,String date, String desc) {
 		super();
 		this.ID = iD;
 		this.Title = title;
@@ -49,11 +50,17 @@ public class Application {
 		this.intender_id = intender_id;
 	}
 
-	public LocalDate getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(LocalDate date) {
+	public void setDate(String date) {
 		this.date = date;
+	}
+	public String getDesc() {
+		return desc;
+	}
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 
 
