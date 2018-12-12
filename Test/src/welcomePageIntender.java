@@ -44,7 +44,7 @@ public class welcomePageIntender extends JFrame {
 		JButton app_stat = new JButton("Show Application Status");
 		app_stat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AppStatus app = new AppStatus();
+				AppStatus app = new AppStatus(intn);
 				app.setVisible(true);
 			}
 		});
