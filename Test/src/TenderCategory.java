@@ -55,9 +55,8 @@ public class TenderCategory extends JFrame {
 		comboBox.addItem("Others");
 		contentPane.add(comboBox);
 		
-		JButton btnViewtenders = new JButton("ViewTenders");
-		btnViewtenders.setBounds(29, 143, 170, 25);
-		contentPane.add(btnViewtenders);
+		
+		
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -80,6 +79,39 @@ public class TenderCategory extends JFrame {
 		model.addColumn("Tender Name"); 
 		model.addColumn("Last Date");
 		model.addColumn("Description"); 
+		JButton btnViewtenders = new JButton("ViewTenders");
+		btnViewtenders.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String value = comboBox.getSelectedItem().toString();
+				if(value == "Electrical")
+				{
+					model.setRowCount(0);
+					model.addRow(new Object[]{"K.A store","20-1-2019","PCB's"});
+				}
+				else if(value == "Logistics")
+				{
+					model.setRowCount(0);
+					model.addRow(new Object[]{"H.K store","20-1-2019","item"});
+				}
+				else if(value == "I.T.")
+				{
+					model.setRowCount(0);
+					model.addRow(new Object[]{"P.K store","20-1-2019","Keyboard"});
+				}
+				else if(value == "Infrastructure")
+				{
+					model.setRowCount(0);
+					model.addRow(new Object[]{"D.K store","20-1-2019","hostel"});
+				}
+				else if(value == "Others")
+				{
+					model.setRowCount(0);
+					model.addRow(new Object[]{"K.A store","20-1-2019","xyz"});
+				}
+			}
+		});
+		btnViewtenders.setBounds(29, 143, 170, 25);
+		contentPane.add(btnViewtenders);
 		//model.addColumn("Estimated Cost");
 		scrollPane.setViewportView(table);
 		//scrollPane.setViewportView(table);
