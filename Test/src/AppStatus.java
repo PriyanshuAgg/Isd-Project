@@ -89,6 +89,7 @@ public class AppStatus extends JFrame {
 				}
 			}
 		});
+		
 		table.setEnabled(false);
 	}
 }
