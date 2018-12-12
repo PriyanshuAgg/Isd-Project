@@ -43,7 +43,7 @@ public class NewApplications extends JFrame {
 			ResultSet rs = stmt.executeQuery("select * from application where status='New';");
 			System.out.println("Showing New applications");
 			while(rs.next()) {
-				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getFloat(8),rs.getString(9),rs.getString(10));
 				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>"});
 				appl.add(a);
 			}			
@@ -54,16 +54,14 @@ public class NewApplications extends JFrame {
 			e.printStackTrace();
 		}
 		table.addMouseListener(new java.awt.event.MouseAdapter()
-		{																
+		{
 			public void mouseClicked(java.awt.event.MouseEvent e)
 			{
 				int row=table.rowAtPoint(e.getPoint());
 				System.out.println("The Row selected is : "+row);
 				int col= table.columnAtPoint(e.getPoint());
 				if (col==1) {
-					//int intn_id  = (int)model.getValueAt(row, col);
-					ViewAppPurchase vap =  new ViewAppPurchase();
-					vap.setVisible(true);
+					int intn_id  = (int)model.getValueAt(row, col);
 				}
 			}
 		}

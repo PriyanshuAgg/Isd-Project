@@ -72,11 +72,13 @@ public class PurchaseReq extends JFrame {
 		JLabel lblDasas = new JLabel(dtf.format(localDate));
 		
 		JLabel lblAddItems = new JLabel("Purchase Application");
+//		JLabel Estimated_cost = new JLabel("Total Estimated Cost");
+//		JLabel Category = new JLabel("Category");
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Application appl = new Application(1, intn.getId(), p_title.getText(), "New", " ",dtf.format(localDate),textPane.getText());
+				Application appl = new Application(0, intn.getId(), p_title.getText(), "New", " ",dtf.format(localDate),textPane.getText(),0,"","");
 				new PurchReqCont(intn,p,appl);
 				that.setVisible(false);
 			}

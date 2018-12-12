@@ -1,5 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -8,12 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
@@ -59,16 +55,16 @@ public class AppStatus extends JFrame {
 			System.out.println("Showing previous application of "+intn.getName());
 			
 			while(rs.next()) {
-				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
-				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getDate(),a.getStatus()});
+				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getFloat(8),rs.getString(9),rs.getString(10));
+				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getDate_app(),a.getStatus()});
 				appl.add(a);
 			}
 			rs = stmt.executeQuery("select * from application where intender_id="+intn.getId()+" and status ='Ongoing';");
 			System.out.println("Showing previous application of "+intn.getName());
 			
 			while(rs.next()) {
-				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
-				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getDate(),a.getStatus()});
+				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getFloat(8),rs.getString(9),rs.getString(10));
+				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getDate_app(),a.getStatus()});
 				appl.add(a);
 			}
 
@@ -80,11 +76,11 @@ public class AppStatus extends JFrame {
         {
 			public void mouseClicked(java.awt.event.MouseEvent e)
 			{
-			int row=table.rowAtPoint(e.getPoint());
+				int row=table.rowAtPoint(e.getPoint());
 				System.out.println("The Row selected is : "+row);
 				int col= table.columnAtPoint(e.getPoint());
 				if(col==1) {
-					ViewApplication viewapp = new ViewApplication(appl.get(row));
+					ViewApplication viewapp = new ViewApplication(intn,appl.get(row));
 					viewapp.setVisible(true);
 				}
 			}
