@@ -38,7 +38,7 @@ public class ViewAppPurchase extends JFrame {
 	 */
 	public ViewAppPurchase() {
 		//ViewAppPurchase that =this;
-		this.setTitle("View App Purchases");
+		this.setTitle("View App Purchases ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 450);
 		contentPane = new JPanel();
