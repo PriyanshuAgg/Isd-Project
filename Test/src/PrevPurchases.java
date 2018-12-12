@@ -37,7 +37,7 @@ public class PrevPurchases extends JFrame {
 
 		try {
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from application where intender_id="+intn.getId()+";");
+			ResultSet rs = stmt.executeQuery("select * from application where intender_id="+intn.getId()+" and status ='Completed';");
 			System.out.println("Showing previous application of "+intn.getName());
 			
 			while(rs.next()) {
@@ -45,6 +45,15 @@ public class PrevPurchases extends JFrame {
 				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getDate(),a.getStatus()});
 				appl.add(a);
 			}
+			rs = stmt.executeQuery("select * from application where intender_id="+intn.getId()+" and status ='Rejected';");
+			System.out.println("Showing previous application of "+intn.getName());
+			
+			while(rs.next()) {
+				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getDate(),a.getStatus()});
+				appl.add(a);
+			}
+
 		} catch (SQLException e1) {
 
 			e1.printStackTrace();
@@ -57,11 +66,8 @@ public class PrevPurchases extends JFrame {
 				System.out.println("The Row selected is : "+row);
 				int col= table.columnAtPoint(e.getPoint());
 				if(col==1) {
-					ViewApplication viewapp = new ViewApplication();
+					ViewApplication viewapp = new ViewApplication(appl.get(row));
 					viewapp.setVisible(true);
-					
-//					ViewTender viewtender = new ViewTender(appl.get(row),intn);
-//					viewtender.setVisible(true);
 				}
 			}
 		});

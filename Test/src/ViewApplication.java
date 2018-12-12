@@ -13,33 +13,20 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ViewApplication extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
+	MysqlCon sql = new MysqlCon();
+	Connection con = sql.Con();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewApplication frame = new ViewApplication();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public ViewApplication() {
+	public ViewApplication(Application a) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 450);
 		contentPane = new JPanel();
@@ -153,6 +140,18 @@ public class ViewApplication extends JFrame {
 		model.addColumn("Description");
 		model.addColumn("Reason for Purchase"); 
 		model.addColumn("Estimated Cost");
+		
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from product where app_id="+a.getID()+";");
+			while(rs.next()) {
+				model.addRow(new Object [] {rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)});
+			}
+		} catch (SQLException e1) {
+
+			e1.printStackTrace();
+		}
+		
 		scrollPane.setViewportView(table);
 		contentPane.setLayout(gl_contentPane);
 	}
