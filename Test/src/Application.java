@@ -10,7 +10,7 @@ public class Application {
 	private String date;
 	private String desc;
 	
-	public Application(int iD, String title, String status, String remarks, int intender_id,String date, String desc) {
+	public Application(int iD, int intender_id, String title, String status, String remarks,String date, String desc) {
 		super();
 		this.ID = iD;
 		this.Title = title;

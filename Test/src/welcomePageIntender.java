@@ -1,11 +1,7 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.JSpinner;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -13,6 +9,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class welcomePageIntender extends JFrame {
 
 	private JPanel pur_req;
@@ -24,7 +21,7 @@ public class welcomePageIntender extends JFrame {
 		pur_req = new JPanel();
 		pur_req.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(pur_req);
-		welcomePageIntender that = this;
+//		welcomePageIntender that = this;
 		
 		JLabel lblWelcomeUser = new JLabel("WELCOME "+intn.getName());
 		
@@ -39,7 +36,7 @@ public class welcomePageIntender extends JFrame {
 		JButton prev_pur = new JButton("Show Previous Purchases");
 		prev_pur.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				PrevPurchases previous = new PrevPurchases();
+				PrevPurchases previous = new PrevPurchases(intn);
 				previous.setVisible(true);
 			}
 		});

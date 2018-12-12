@@ -9,7 +9,7 @@ public class teest{
 		try {
 			Statement stmt = con.createStatement();	
 //			stmt.executeUpdate("drop table application;");
-			ResultSet rs = stmt.executeQuery("select * from product;");
+			ResultSet rs = stmt.executeQuery("describe application;");
 			while(rs.next())
 				System.out.println(rs.getString(1));
 

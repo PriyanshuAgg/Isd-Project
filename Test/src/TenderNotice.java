@@ -51,15 +51,15 @@ public class TenderNotice extends JFrame {
 
         {
 
-	public void mouseClicked(java.awt.event.MouseEvent e)
-	{
-	int row=table.rowAtPoint(e.getPoint());
-	
-	int col= table.columnAtPoint(e.getPoint());
-	if(col==1) {
-	ViewTender viewtender = new ViewTender();
-	viewtender.setVisible(true);}
-	}});
+		public void mouseClicked(java.awt.event.MouseEvent e)
+		{
+			int row=table.rowAtPoint(e.getPoint());
+			int col= table.columnAtPoint(e.getPoint());
+			if(col==1) {
+			//	ViewTender viewtender = new ViewTender();
+			//	viewtender.setVisible(true);
+			}
+		}});
 		table.setEnabled(false);
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(286, 335, 117, 25);

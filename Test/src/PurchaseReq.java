@@ -22,10 +22,7 @@ public class PurchaseReq extends JFrame {
 	private JTextField p_title;
 	private ArrayList<Product> p = new ArrayList<Product>()  ;
 
-	/**
-	 * Launch the application.
-	 */
-
+	
 	public PurchaseReq(Intender intn) {
 		this.setTitle("New Purchase");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,17 +43,12 @@ public class PurchaseReq extends JFrame {
 		p_title.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-//		Object rowData[][] = { { "Football", "medium_sz", "all_punchered", "450", "470" }};
-//		Object columnNames[] = { "Name", "Description", "Reason_Purchase", "Estimated_Cost"};
-//		Object rowData[][] = {};
-//		JTable table = new JTable(rowData,columnNames);
 		DefaultTableModel model = new DefaultTableModel(); 
 		JTable table = new JTable(model); 
 		model.addColumn("Name"); 
 		model.addColumn("Description");
 		model.addColumn("Reason for Purchase"); 
-		model.addColumn("Estimated Cost"); 
-//		model.addRow(rowData);
+		model.addColumn("Estimated Cost");
 		scrollPane.setViewportView(table);
 		JButton btnAddProducts = new JButton("Add Products");
 		btnAddProducts.addActionListener(new ActionListener() {
@@ -84,7 +76,7 @@ public class PurchaseReq extends JFrame {
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Application appl = new Application(1, p_title.getText(), "Created", "New", intn.getId(),dtf.format(localDate),textPane.getText());
+				Application appl = new Application(1, intn.getId(), p_title.getText(), "Created", "New",dtf.format(localDate),textPane.getText());
 				new PurchReqCont(intn,p,appl);
 				that.setVisible(false);
 			}
