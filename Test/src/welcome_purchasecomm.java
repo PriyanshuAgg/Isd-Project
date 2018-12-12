@@ -1,5 +1,3 @@
-//import java.awt.BorderLayout;
-//import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,31 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-//import javax.swing.border.EmptyBorder;
 
+
+@SuppressWarnings("serial")
 public class welcome_purchasecomm extends JFrame {
-
-//	private JPanel contentPane;
-//
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					welcome_purchasecomm frame = new welcome_purchasecomm();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-//
-//	/**
-//	 * Create the frame.
-//	 */
 
 	public welcome_purchasecomm(String username) {
 		this.setTitle("Welcome Purchase Committe");

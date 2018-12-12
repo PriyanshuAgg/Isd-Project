@@ -76,7 +76,7 @@ public class PurchaseReq extends JFrame {
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Application appl = new Application(1, intn.getId(), p_title.getText(), "Created", "New",dtf.format(localDate),textPane.getText());
+				Application appl = new Application(1, intn.getId(), p_title.getText(), "New", " ",dtf.format(localDate),textPane.getText());
 				new PurchReqCont(intn,p,appl);
 				that.setVisible(false);
 			}

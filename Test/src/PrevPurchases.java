@@ -60,8 +60,8 @@ public class PrevPurchases extends JFrame {
 					ViewApplication viewapp = new ViewApplication();
 					viewapp.setVisible(true);
 					
-					ViewTender viewtender = new ViewTender(appl.get(row),intn);
-					viewtender.setVisible(true);
+//					ViewTender viewtender = new ViewTender(appl.get(row),intn);
+//					viewtender.setVisible(true);
 				}
 			}
 		});

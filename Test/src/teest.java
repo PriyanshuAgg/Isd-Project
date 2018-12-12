@@ -9,9 +9,9 @@ public class teest{
 		try {
 			Statement stmt = con.createStatement();	
 //			stmt.executeUpdate("drop table application;");
-			ResultSet rs = stmt.executeQuery("describe application;");
+			ResultSet rs = stmt.executeQuery("select * from application;");
 			while(rs.next())
-				System.out.println(rs.getString(1));
+				System.out.println(rs.getString(4));
 
 //				System.out.println(rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3));
 		} catch (SQLException e) {

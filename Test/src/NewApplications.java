@@ -1,37 +1,29 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
+
+@SuppressWarnings("serial")
 public class NewApplications extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	MysqlCon sql = new MysqlCon();
+	Connection con = sql.Con();
+	ArrayList<Application> appl = new ArrayList<Application>();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NewApplications frame = new NewApplications();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public NewApplications() {
+		NewApplications that = this;
 		this.setTitle("New Applications");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 450);
@@ -43,14 +35,47 @@ public class NewApplications extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 12, 544, 214);
 		contentPane.add(scrollPane);
-		Object rowData[][] = { { 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},
-		        { 2, "<html><a href=\"\">abs </a></html>", "3rd Nov 2018" },
-		        {3, "<html><a href=\"\">bca </a></html>", "4th Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"},{ 1, "<html><a href=\"\">xyz </a></html>", "2nd Nov 2018"}};
-		    Object columnNames[] = { "Id", "Purchase Title", "Intender"};
-		JTable table = new JTable(rowData,columnNames);
-//		table.addMouseListener(new java.awt.event.MouseAdapter()
+	    Object columnNames[] = { "Id", "Purchase Title", "Intender"};
+	    DefaultTableModel model = new DefaultTableModel(columnNames,0); 
+		JTable table = new JTable(model); 
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from application where status='New';");
+			System.out.println("Showing New applications");
+			while(rs.next()) {
+				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>"});
+				appl.add(a);
+			}			
+//			ResultSet r = stmt.executeQuery("select * from intender where id="+a.getIntender_id()+";");
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		table.addMouseListener(new java.awt.event.MouseAdapter()
+		{
+			public void mouseClicked(java.awt.event.MouseEvent e)
+			{
+				int row=table.rowAtPoint(e.getPoint());
+				System.out.println("The Row selected is : "+row);
+				int col= table.columnAtPoint(e.getPoint());
+				if (col==1) {
+					int intn_id  = (int)model.getValueAt(row, col);
+				}
+			}
+		}
+		);
 
 		scrollPane.setViewportView(table);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				that.dispose();
+			}
+		});
+		btnBack.setBounds(247, 238, 96, 25);
+		contentPane.add(btnBack);
 	}
-
 }
