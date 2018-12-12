@@ -61,7 +61,8 @@ public class NewApplications extends JFrame {
 				System.out.println("The Row selected is : "+row);
 				int col= table.columnAtPoint(e.getPoint());
 				if (col==1) {
-					int intn_id  = (int)model.getValueAt(row, col);
+					ViewAppPurchase vap = new ViewAppPurchase();
+					vap.setVisible(true);
 				}
 			}
 		}
