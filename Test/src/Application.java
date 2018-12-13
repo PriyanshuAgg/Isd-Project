@@ -14,7 +14,7 @@ public class Application {
 	
 	public Application(int iD, int intender_id, String title, String status, String remarks, String date_app, String desc,float est_total, String fin_date, String category) {
 		this.ID = iD;
-		this.intender_id = intender_id;
+		this.intender_id = intender_id ;
 		this.Title = title;
 		this.status = status;
 		this.remarks = remarks;
