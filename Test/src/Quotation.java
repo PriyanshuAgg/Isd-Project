@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class TenderNotice extends JFrame {
+public class Quotation extends JFrame {
 
 	private JPanel contentPane;
 
@@ -21,7 +21,7 @@ public class TenderNotice extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TenderNotice frame = new TenderNotice();
+					Quotation frame = new Quotation();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,12 +33,12 @@ public class TenderNotice extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TenderNotice() {
-		this.setTitle("Tender Notice");
+	public Quotation() {
+		this.setTitle("Quotation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 650, 450);
 		getContentPane().setLayout(null);
-		TenderNotice that =this;
+		Quotation that =this;
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 41, 614, 203);
 		getContentPane().add(scrollPane);

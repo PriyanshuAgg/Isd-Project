@@ -86,27 +86,40 @@ public class TenderCategory extends JFrame {
 				if(value == "Electrical")
 				{
 					model.setRowCount(0);
-					model.addRow(new Object[]{"K.A store","20-1-2019","PCB's"});
+					model.addRow(new Object[]{"<html><a href=\"\">test1</a></html>","20-1-2019","PCB's"});
 				}
 				else if(value == "Logistics")
 				{
 					model.setRowCount(0);
-					model.addRow(new Object[]{"H.K store","20-1-2019","item"});
+					model.addRow(new Object[]{"<html><a href=\"\">test2</a></html>","20-1-2019","item"});
 				}
 				else if(value == "I.T.")
 				{
 					model.setRowCount(0);
-					model.addRow(new Object[]{"P.K store","20-1-2019","Keyboard"});
+					model.addRow(new Object[]{"<html><a href=\"\">test3</a></html>","20-1-2019","Keyboard"});
 				}
 				else if(value == "Infrastructure")
 				{
 					model.setRowCount(0);
-					model.addRow(new Object[]{"D.K store","20-1-2019","hostel"});
+					model.addRow(new Object[]{"<html><a href=\"\">test4</a></html>","20-1-2019","hostel"});
 				}
 				else if(value == "Others")
 				{
 					model.setRowCount(0);
-					model.addRow(new Object[]{"K.A store","20-1-2019","xyz"});
+					model.addRow(new Object[]{"<html><a href=\"\">test5</a></html>","20-1-2019","xyz"});
+				}
+			}
+		});
+		table.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+			public void mouseClicked(java.awt.event.MouseEvent e)
+			{
+			int row=table.rowAtPoint(e.getPoint());
+				System.out.println("The Row selected is : "+row);
+				int col= table.columnAtPoint(e.getPoint());
+				if(col==0) {
+					TenderNoticee viewapp = new TenderNoticee();
+					viewapp.setVisible(true);
 				}
 			}
 		});

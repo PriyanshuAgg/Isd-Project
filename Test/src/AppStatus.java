@@ -46,7 +46,7 @@ public class AppStatus extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				that.dispose();;
 			}});
-		btnBack.setBounds(236, 239, 114, 25);
+		btnBack.setBounds(474, 322, 114, 25);
 		contentPane.add(btnBack);
 		
 		try {
@@ -87,5 +87,9 @@ public class AppStatus extends JFrame {
 		});
 		
 		table.setEnabled(false);
+		
+		JButton btnViewQuotations = new JButton("View Quotations");
+		btnViewQuotations.setBounds(48, 322, 187, 25);
+		contentPane.add(btnViewQuotations);
 	}
 }
