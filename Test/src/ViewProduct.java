@@ -1,6 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -9,10 +6,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class ViewProduct extends JFrame {
 
 	private JPanel contentPane;
-	public ViewProduct() {
+	public ViewProduct(Product p) {
 		this.setTitle("View Product");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 450);
@@ -25,7 +23,7 @@ public class ViewProduct extends JFrame {
 		lblNewLabel.setBounds(47, 84, 149, 15);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel(p.getName());
 		lblNewLabel_1.setBounds(327, 84, 70, 15);
 		contentPane.add(lblNewLabel_1);
 		
@@ -33,7 +31,7 @@ public class ViewProduct extends JFrame {
 		lblNewLabel_2.setBounds(47, 112, 149, 15);
 		contentPane.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("New label");
+		JLabel lblNewLabel_3 = new JLabel(p.getDesc());
 		lblNewLabel_3.setBounds(327, 112, 70, 15);
 		contentPane.add(lblNewLabel_3);
 		
@@ -41,7 +39,7 @@ public class ViewProduct extends JFrame {
 		lblNewLabel_4.setBounds(47, 142, 149, 15);
 		contentPane.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("New label");
+		JLabel lblNewLabel_5 = new JLabel(p.getReason());
 		lblNewLabel_5.setBounds(327, 142, 70, 15);
 		contentPane.add(lblNewLabel_5);
 		
@@ -49,7 +47,7 @@ public class ViewProduct extends JFrame {
 		lblNewLabel_6.setBounds(47, 169, 149, 15);
 		contentPane.add(lblNewLabel_6);
 		
-		JLabel lblNewLabel_7 = new JLabel("New label");
+		JLabel lblNewLabel_7 = new JLabel(Float.toString(p.getCost()));
 		lblNewLabel_7.setBounds(327, 169, 70, 15);
 		contentPane.add(lblNewLabel_7);
 		
@@ -57,7 +55,7 @@ public class ViewProduct extends JFrame {
 		lblNewLabel_8.setBounds(47, 196, 169, 15);
 		contentPane.add(lblNewLabel_8);
 		
-		JLabel lblNewLabel_9 = new JLabel("New label");
+		JLabel lblNewLabel_9 = new JLabel(p.getReq_specs());
 		lblNewLabel_9.setBounds(327, 196, 70, 15);
 		contentPane.add(lblNewLabel_9);
 		
@@ -65,7 +63,7 @@ public class ViewProduct extends JFrame {
 		lblNewLabel_10.setBounds(47, 223, 169, 15);
 		contentPane.add(lblNewLabel_10);
 		
-		JLabel lblNewLabel_11 = new JLabel("New label");
+		JLabel lblNewLabel_11 = new JLabel(p.getReq_specs());
 		lblNewLabel_11.setBounds(327, 223, 70, 15);
 		contentPane.add(lblNewLabel_11);
 		ViewProduct that =this;
