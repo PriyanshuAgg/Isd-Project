@@ -24,6 +24,7 @@ public class PurchaseReq extends JFrame {
 	private ArrayList<Product> p = new ArrayList<Product>()  ;
 
 	
+	@SuppressWarnings("unchecked")
 	public PurchaseReq(Intender intn) {
 		this.setTitle("New Purchase");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,13 +74,22 @@ public class PurchaseReq extends JFrame {
 		JLabel lblDasas = new JLabel(dtf.format(localDate));
 		
 		JLabel lblAddItems = new JLabel("Purchase Application");
+		@SuppressWarnings("rawtypes")
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(271, 69, 200, 24);
+		comboBox.addItem("Electrical");
+		comboBox.addItem("Logistics");
+		comboBox.addItem("I.T.");
+		comboBox.addItem("Infrastructure");
+		comboBox.addItem("Others");
+		
 //		JLabel Estimated_cost = new JLabel("Total Estimated Cost");
 //		JLabel Category = new JLabel("Category");
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Application appl = new Application(0, intn.getId(), p_title.getText(), "New", " ",dtf.format(localDate),textPane.getText(),0,"","");
+				Application appl = new Application(0, intn.getId(), p_title.getText(), "New", " ",dtf.format(localDate),textPane.getText(),0,"",comboBox.getSelectedItem().toString());
 				new PurchReqCont(intn,p,appl);
 				that.setVisible(false);
 			}
@@ -102,13 +112,7 @@ public class PurchaseReq extends JFrame {
 		
 		JLabel lblCategory = new JLabel("Category");
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(271, 69, 200, 24);
-		comboBox.addItem("Electrical");
-		comboBox.addItem("Logistics");
-		comboBox.addItem("I.T.");
-		comboBox.addItem("Infrastructure");
-		comboBox.addItem("Others");
+		
 		
 		JLabel lblTotalEstimatedCost = new JLabel("Total Estimated Cost");
 		

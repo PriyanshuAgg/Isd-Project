@@ -1,6 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,35 +7,23 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class ViewAppPurchase extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewAppPurchase frame = new ViewAppPurchase();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public ViewAppPurchase() {
-		//ViewAppPurchase that =this;
-		this.setTitle("View App Purchases ");
+	public ViewAppPurchase(Application a) {
+		this.setTitle("");
+		MysqlCon sql = new MysqlCon();
+		Connection con = sql.Con();
+		ArrayList<Product> P = new ArrayList<Product>();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 450);
 		contentPane = new JPanel();
@@ -54,15 +39,26 @@ public class ViewAppPurchase extends JFrame {
 		lblNewLabel.setBounds(66, 93, 119, 15);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblPurtitle = new JLabel("PurTitle");
+		JLabel lblPurtitle = new JLabel(a.getTitle());
 		lblPurtitle.setBounds(320, 93, 119, 15);
 		contentPane.add(lblPurtitle);
 		
-		JLabel lblNewLabel_1 = new JLabel("Name");
+		JLabel lblNewLabel_1 = new JLabel("Intender");
 		lblNewLabel_1.setBounds(66, 120, 119, 15);
 		contentPane.add(lblNewLabel_1);
+		Intender intn = null;
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from intender where id="+a.getIntender_id()+";");
+			rs.first();
+			intn = new Intender(rs);
+		} catch (SQLException e ) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		JLabel lblNewLabel_2 = new JLabel(intn.getName());
 		lblNewLabel_2.setBounds(320, 120, 119, 15);
 		contentPane.add(lblNewLabel_2);
 		
@@ -70,7 +66,7 @@ public class ViewAppPurchase extends JFrame {
 		lblNewLabel_3.setBounds(66, 147, 119, 15);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("New label");
+		JLabel lblNewLabel_4 = new JLabel(a.getDesc());
 		lblNewLabel_4.setBounds(320, 147, 119, 15);
 		contentPane.add(lblNewLabel_4);
 		
@@ -78,7 +74,7 @@ public class ViewAppPurchase extends JFrame {
 		lblNewLabel_5.setBounds(66, 174, 140, 15);
 		contentPane.add(lblNewLabel_5);
 		
-		JLabel lblNewLabel_6 = new JLabel("New label");
+		JLabel lblNewLabel_6 = new JLabel(Float.toString(a.getEst_total()));
 		lblNewLabel_6.setBounds(320, 174, 119, 15);
 		contentPane.add(lblNewLabel_6);
 		
@@ -91,7 +87,18 @@ public class ViewAppPurchase extends JFrame {
 		model.addColumn("Description");
 		model.addColumn("Reason for Purchase"); 
 		model.addColumn("Estimated Cost");
-		model.addRow(new Object [] {"<html><a href=\\\"\\\">abc</a></html>","gojfshf","fsdb","1000"});
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from product where app_id="+a.getID()+";");
+			while(rs.next()) {
+				Product p = new Product(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getFloat(5),rs.getString(6),rs.getString(7));
+				P.add(p);
+				model.addRow(new Object [] {"<html><a href=\"\">"+rs.getString(2)+"</a></html>", rs.getString(3), rs.getString(4), rs.getString(5)});
+			}
+		} catch (SQLException e1) {
+
+			e1.printStackTrace();
+		}
 		scrollPane.setViewportView(table);
 		table.addMouseListener(new java.awt.event.MouseAdapter()
 		{																
@@ -102,7 +109,7 @@ public class ViewAppPurchase extends JFrame {
 				int col= table.columnAtPoint(e.getPoint());
 				if (col==0) {
 					//int intn_id  = (int)model.getValueAt(row, col);
-					ViewProduct vap =  new ViewProduct();
+					ViewProduct vap =  new ViewProduct(P.get(row));
 					vap.setVisible(true);
 				}
 			}
@@ -113,7 +120,7 @@ public class ViewAppPurchase extends JFrame {
 		JButton btnMakePurchase = new JButton("Make Purchase");
 		btnMakePurchase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MakePurchase mkpur = new MakePurchase(that);
+				MakePurchase mkpur = new MakePurchase(that,a);
 				mkpur.setVisible(true);
 			}
 		});

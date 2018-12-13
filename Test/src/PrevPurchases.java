@@ -63,7 +63,7 @@ public class PrevPurchases extends JFrame {
 				System.out.println("The Row selected is : "+row);
 				int col= table.columnAtPoint(e.getPoint());
 				if(col==1) {
-					ViewApplication viewapp = new ViewApplication(appl.get(row));
+					ViewApplication viewapp = new ViewApplication(intn,appl.get(row));
 					viewapp.setVisible(true);
 				}
 			}

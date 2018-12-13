@@ -15,13 +15,6 @@ public class Intender {
 			}
 
 		}
-	
-		
-		
-		
-		
-		
-
 	public int getId() {
 		return id;
 	}

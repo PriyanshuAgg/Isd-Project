@@ -1,7 +1,7 @@
 
 public class Product {
 
-
+	private int app_id;
 	private String name;
 	private String desc;
 	private String reason;
@@ -9,8 +9,8 @@ public class Product {
 	private String req_specs;
 	private String pref_specs;
 	
-	public Product(String name, String desc, String reason, float cost, String req_specs, String pref_specs) {
-		super();
+	public Product(int app_id,String name, String desc, String reason, float cost, String req_specs, String pref_specs) {
+		this.setApp_id(app_id);
 		this.name = name;
 		this.desc = desc;
 		this.reason = reason;
@@ -19,7 +19,15 @@ public class Product {
 		this.pref_specs = pref_specs;
 	}
 
-	
+	public Product(String name, String desc, String reason, float cost, String req_specs, String pref_specs) {
+		this.name = name;
+		this.desc = desc;
+		this.reason = reason;
+		this.cost = cost;
+		this.req_specs = req_specs;
+		this.pref_specs = pref_specs;
+	}
+
 	
 	
 	
@@ -62,5 +70,29 @@ public class Product {
 	}
 	public void setPref_specs(String pref_specs) {
 		this.pref_specs = pref_specs;
+	}
+
+
+
+
+
+
+
+
+
+	public int getApp_id() {
+		return app_id;
+	}
+
+
+
+
+
+
+
+
+
+	public void setApp_id(int app_id) {
+		this.app_id = app_id;
 	}
 }
