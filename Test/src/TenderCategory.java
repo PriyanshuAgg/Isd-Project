@@ -1,6 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -11,32 +8,19 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class TenderCategory extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TenderCategory frame = new TenderCategory();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public TenderCategory() {
 		this.setTitle("Tender Categories");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,8 +39,9 @@ public class TenderCategory extends JFrame {
 		comboBox.addItem("Others");
 		contentPane.add(comboBox);
 		
-		
-		
+		MysqlCon sql = new MysqlCon();
+		Connection con = sql.Con();
+		ArrayList<Application> appl = new ArrayList<Application>();
 		
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
@@ -86,27 +71,92 @@ public class TenderCategory extends JFrame {
 				if(value == "Electrical")
 				{
 					model.setRowCount(0);
-					model.addRow(new Object[]{"<html><a href=\"\">test1</a></html>","20-1-2019","PCB's"});
+					try {
+						Statement stmt = con.createStatement();
+						appl.clear();
+						ResultSet rs = stmt.executeQuery("select * from application where category='Electrical' and status='Ongoing';");
+						while(rs.next()) {
+							Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getFloat(8),rs.getString(9),rs.getString(10));
+							model.addRow(new Object [] {"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getFin_date(),a.getDesc()});
+							appl.add(a);
+						}
+
+					} catch (SQLException e ) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				else if(value == "Logistics")
 				{
 					model.setRowCount(0);
-					model.addRow(new Object[]{"<html><a href=\"\">test2</a></html>","20-1-2019","item"});
+					appl.clear();
+					try {
+						Statement stmt = con.createStatement();
+						ResultSet rs = stmt.executeQuery("select * from application where category='Logistics' and status='Ongoing';");
+						while(rs.next()) {
+							Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getFloat(8),rs.getString(9),rs.getString(10));
+							model.addRow(new Object [] {"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getFin_date(),a.getDesc()});
+							appl.add(a);
+						}
+
+					} catch (SQLException e ) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				else if(value == "I.T.")
 				{
 					model.setRowCount(0);
-					model.addRow(new Object[]{"<html><a href=\"\">test3</a></html>","20-1-2019","Keyboard"});
+					appl.clear();
+					try {
+						Statement stmt = con.createStatement();
+						ResultSet rs = stmt.executeQuery("select * from application where category='I.T.' and status='Ongoing';");
+						while(rs.next()) {
+							Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getFloat(8),rs.getString(9),rs.getString(10));
+							model.addRow(new Object [] {"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getFin_date(),a.getDesc()});
+							appl.add(a);
+						}
+
+					} catch (SQLException e ) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				else if(value == "Infrastructure")
 				{
 					model.setRowCount(0);
-					model.addRow(new Object[]{"<html><a href=\"\">test4</a></html>","20-1-2019","hostel"});
+					appl.clear();
+					try {
+						Statement stmt = con.createStatement();
+						ResultSet rs = stmt.executeQuery("select * from application where category='Infrastructure' and status='Ongoing';");
+						while(rs.next()) {
+							Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getFloat(8),rs.getString(9),rs.getString(10));
+							model.addRow(new Object [] {"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getFin_date(),a.getDesc()});
+							appl.add(a);
+						}
+
+					} catch (SQLException e ) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				else if(value == "Others")
 				{
 					model.setRowCount(0);
-					model.addRow(new Object[]{"<html><a href=\"\">test5</a></html>","20-1-2019","xyz"});
+					appl.clear();
+					try {
+						Statement stmt = con.createStatement();
+						ResultSet rs = stmt.executeQuery("select * from application where category='Others' and status='Ongoing';");
+						while(rs.next()) {
+							Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getFloat(8),rs.getString(9),rs.getString(10));
+							model.addRow(new Object [] {"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getFin_date(),a.getDesc()});
+							appl.add(a);
+						}
+
+					} catch (SQLException e ) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 		});
@@ -118,7 +168,7 @@ public class TenderCategory extends JFrame {
 				System.out.println("The Row selected is : "+row);
 				int col= table.columnAtPoint(e.getPoint());
 				if(col==0) {
-					TenderNoticee viewapp = new TenderNoticee();
+					TenderNoticee viewapp = new TenderNoticee(appl.get(row));
 					viewapp.setVisible(true);
 				}
 			}
