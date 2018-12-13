@@ -53,7 +53,7 @@ public class welcomePageIntender extends JFrame {
 		
 		JLabel lblBudgetRemaining = new JLabel("Budget Remaining");
 		
-		JLabel lblBudget = new JLabel("Budget");
+		JLabel lblBudget = new JLabel(Float.toString(intn.getBudget()));
 		
 		
 		GroupLayout gl_pur_req = new GroupLayout(pur_req);
