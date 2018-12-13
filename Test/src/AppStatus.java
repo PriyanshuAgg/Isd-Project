@@ -89,6 +89,12 @@ public class AppStatus extends JFrame {
 		table.setEnabled(false);
 		
 		JButton btnViewQuotations = new JButton("View Quotations");
+		btnViewQuotations.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TechReview tc = new TechReview();
+				tc.setVisible(true);
+			}
+		});
 		btnViewQuotations.setBounds(48, 322, 187, 25);
 		contentPane.add(btnViewQuotations);
 	}

@@ -83,8 +83,9 @@ public class TenderNoticee extends JFrame {
 				System.out.println("The Row selected is : "+row);
 				int col= table.columnAtPoint(e.getPoint());
 				if (col==0) {
+					Product p = new Product("a","a","a",123,"3eqq","fdfafa");
 					//int intn_id  = (int)model.getValueAt(row, col);
-					ViewProduct vap =  new ViewProduct();
+					ViewProduct vap =  new ViewProduct(p);
 					vap.setVisible(true);
 				}
 			}

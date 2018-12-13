@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
@@ -89,12 +90,34 @@ public class QuotRank extends JFrame {
 		scrollPane.setBounds(44, 238, 495, 115);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
+		DefaultTableModel model = new DefaultTableModel(); 
+		JTable table = new JTable(model); 
+		model.addColumn("Name"); 
+		model.addColumn("Description");
+		model.addColumn("Reason for Purchase"); 
+		model.addColumn("Estimated Cost");
+		model.addRow(new Object [] {"<html><a href=\\\"\\\">abc</a></html>","gojfshf","fsdb","1000"});
 		scrollPane.setViewportView(table);
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(233, 365, 117, 25);
 		contentPane.add(btnSubmit);
+		table.addMouseListener(new java.awt.event.MouseAdapter()
+		{																
+			public void mouseClicked(java.awt.event.MouseEvent e)
+			{
+				int row=table.rowAtPoint(e.getPoint());
+				System.out.println("The Row selected is : "+row);
+				int col= table.columnAtPoint(e.getPoint());
+				if (col==0) {
+					//int intn_id  = (int)model.getValueAt(row, col);
+					VendProd vap =  new VendProd();
+					vap.setVisible(true);
+				}
+			}
+		}
+		);
+		
 	}
 
 }

@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JLabel;
@@ -44,10 +45,14 @@ public class TechReview extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(37, 54, 476, 88);
+		scrollPane.setBounds(81, 77, 476, 88);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
+		DefaultTableModel model = new DefaultTableModel(); 
+		JTable table = new JTable(model); 
+		model.addColumn("Id"); 
+		model.addColumn("Vendor Name");
+		model.addRow(new Object [] {"<html><a href=\\\"\\\">1</a></html>","gojfshf"});
 		scrollPane.setViewportView(table);
 		
 		JLabel lblReview = new JLabel("Review");
@@ -61,5 +66,23 @@ public class TechReview extends JFrame {
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.setBounds(280, 384, 117, 25);
 		contentPane.add(btnSubmit);
+		
+		JLabel lblQuotations = new JLabel("Quotations");
+		lblQuotations.setBounds(37, 27, 145, 15);
+		contentPane.add(lblQuotations);
+		table.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+			public void mouseClicked(java.awt.event.MouseEvent e)
+			{
+			int row=table.rowAtPoint(e.getPoint());
+				System.out.println("The Row selected is : "+row);
+				int col= table.columnAtPoint(e.getPoint());
+				if(col==0) {
+					QuotRank viewapp = new QuotRank();
+					viewapp.setVisible(true);
+				}
+			}
+		});
+		table.setEnabled(false);
 	}
 }
