@@ -49,7 +49,7 @@ public class FinReview extends JFrame {
 		contentPane.add(lblAppTitle);
 		
 		JLabel lblEstCost = new JLabel("Est Cost");
-		lblEstCost.setBounds(26, 87, 166, 15);
+		lblEstCost.setBounds(26, 87,  166, 15);
 		contentPane.add(lblEstCost);
 		
 		JLabel lblNewLabel = new JLabel("New label");
