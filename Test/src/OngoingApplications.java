@@ -60,6 +60,7 @@ public class OngoingApplications extends JFrame {
 				that.dispose();
 			}
 		});
+		table.setEnabled(false);
 		btnBack.setBounds(269, 341, 117, 25);
 		contentPane.add(btnBack);
 	}

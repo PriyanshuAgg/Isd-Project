@@ -110,6 +110,7 @@ public class TenderCategory extends JFrame {
 				}
 			}
 		});
+		table.setEnabled(false);
 		btnViewtenders.setBounds(29, 143, 170, 25);
 		contentPane.add(btnViewtenders);
 		//model.addColumn("Estimated Cost");

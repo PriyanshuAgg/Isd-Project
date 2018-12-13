@@ -281,7 +281,7 @@ public class ViewApplication extends JFrame {
 
 			e1.printStackTrace();
 		}
-		
+		table.setEnabled(false);
 		scrollPane.setViewportView(table);
 		contentPane.setLayout(gl_contentPane);
 	}

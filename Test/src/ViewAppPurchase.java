@@ -126,6 +126,7 @@ public class ViewAppPurchase extends JFrame {
 			that.dispose();
 			}
 		});
+		table.setEnabled(false);
 		btnBack.setBounds(426, 374, 117, 25);
 		contentPane.add(btnBack);
 	}

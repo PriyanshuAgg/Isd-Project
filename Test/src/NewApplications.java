@@ -67,7 +67,7 @@ public class NewApplications extends JFrame {
 			}
 		}
 		);
-
+		table.setEnabled(false);
 		scrollPane.setViewportView(table);
 		
 		JButton btnBack = new JButton("Back");

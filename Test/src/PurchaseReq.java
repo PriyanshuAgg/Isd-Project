@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
+import javax.swing.JComboBox;
 
 @SuppressWarnings("serial")
 public class PurchaseReq extends JFrame {
@@ -99,6 +100,20 @@ public class PurchaseReq extends JFrame {
 		
 		JLabel lblDescription = new JLabel("Description");
 		
+		JLabel lblCategory = new JLabel("Category");
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(271, 69, 200, 24);
+		comboBox.addItem("Electrical");
+		comboBox.addItem("Logistics");
+		comboBox.addItem("I.T.");
+		comboBox.addItem("Infrastructure");
+		comboBox.addItem("Others");
+		
+		JLabel lblTotalEstimatedCost = new JLabel("Total Estimated Cost");
+		
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		
 		
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
@@ -117,22 +132,20 @@ public class PurchaseReq extends JFrame {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(44)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(44)
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblPurchaseTitle, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblDescription)))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(41)
-									.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE)))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(lblPurchaseTitle, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblDescription)
+								.addComponent(lblCategory)
+								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 155, GroupLayout.PREFERRED_SIZE))
+							.addGap(75)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+								.addComponent(textPane, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
 								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-								.addComponent(p_title, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-								.addComponent(lblArtClub, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(p_title, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+								.addComponent(lblArtClub, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
+								.addComponent(comboBox, 0, 205, Short.MAX_VALUE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(206)
 							.addComponent(lblAddItems, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
@@ -144,6 +157,12 @@ public class PurchaseReq extends JFrame {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
 					.addGap(24))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(37)
+					.addComponent(lblTotalEstimatedCost)
+					.addGap(115)
+					.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(109, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -167,11 +186,19 @@ public class PurchaseReq extends JFrame {
 						.addComponent(textPane, GroupLayout.PREFERRED_SIZE, 56, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel)
-						.addComponent(lblNewLabel_1))
-					.addPreferredGap(ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+						.addComponent(lblNewLabel_1)
+						.addComponent(lblNewLabel))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblCategory)
+						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(18, 18, Short.MAX_VALUE)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
-					.addGap(59)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblTotalEstimatedCost)
+						.addComponent(lblNewLabel_3))
+					.addGap(32)
 					.addComponent(btnAddProducts)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)

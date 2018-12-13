@@ -52,7 +52,7 @@ public class PreviousApplications extends JFrame {
 		    Object columnNames[] = { "Id", "Purchase Title", "Intender","Status"};
 		JTable table = new JTable(rowData,columnNames);
 		scrollPane.setViewportView(table);
-		
+		table.setEnabled(false);
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
