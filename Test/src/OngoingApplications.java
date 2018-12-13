@@ -35,7 +35,7 @@ public class OngoingApplications extends JFrame {
 		Connection con = sql.Con();
 		ArrayList<Application> appl = new ArrayList<Application>();
 		
-		Object columnNames[] = { "Id", "Purchase Title", "Intender", "Status"};
+		Object columnNames[] = { "Id", "Purchase Title", "Status"};
 		DefaultTableModel model = new DefaultTableModel(columnNames,0); 
 		JTable table = new JTable(model); 
 		try {
@@ -45,9 +45,9 @@ public class OngoingApplications extends JFrame {
 			rs.first();
 			while(rs.next()) {
 				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getFloat(8),rs.getString(9),rs.getString(10));
-				ResultSet r = stmt.executeQuery("select name from intender where id="+a.getIntender_id()+";");
-				r.first();
-				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>",r.getString(1)});
+//				ResultSet r = stmt.executeQuery("select name from intender where id="+a.getIntender_id()+";");
+//				r.first();
+				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>"});
 				appl.add(a);
 			}
 		} catch (SQLException e ) {
@@ -56,7 +56,7 @@ public class OngoingApplications extends JFrame {
 		}
 		try {
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from application where status='Quatation Recieved';");
+			ResultSet rs = stmt.executeQuery("select * from application where status='Quotation Recieved';");
 			System.out.println("Showing New applications");
 			rs.first();
 			while(rs.next()) {

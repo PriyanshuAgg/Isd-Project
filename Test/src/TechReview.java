@@ -1,6 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -9,33 +6,21 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class TechReview extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TechReview frame = new TechReview();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public TechReview() {
+	public TechReview(Intender intn, Application a) {
 		this.setTitle("Technical Review");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 450);
@@ -43,6 +28,10 @@ public class TechReview extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		MysqlCon sql = new MysqlCon();
+		Connection con = sql.Con();
+		ArrayList<Quotation> Q = new ArrayList<Quotation>();
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(81, 77, 476, 88);
@@ -52,7 +41,20 @@ public class TechReview extends JFrame {
 		JTable table = new JTable(model); 
 		model.addColumn("Id"); 
 		model.addColumn("Vendor Name");
-		model.addRow(new Object [] {"<html><a href=\\\"\\\">1</a></html>","gojfshf"});
+		
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("select * from quotation where app_id="+a.getID()+";");
+			while(rs.next()) {
+				Quotation q = new Quotation(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7),rs.getString(8),rs.getString(9),rs.getFloat(10));
+				model.addRow(new Object [] {"<html><a href=\"\">"+q.getId()+"</a></html>",q.getV_name()});
+				Q.add(q);
+			}
+
+		} catch (SQLException e ) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		scrollPane.setViewportView(table);
 		
 		JLabel lblReview = new JLabel("Review");
@@ -78,7 +80,7 @@ public class TechReview extends JFrame {
 				System.out.println("The Row selected is : "+row);
 				int col= table.columnAtPoint(e.getPoint());
 				if(col==0) {
-					QuotRank viewapp = new QuotRank();
+					QuotRank viewapp = new QuotRank(Q.get(row));
 					viewapp.setVisible(true);
 				}
 			}

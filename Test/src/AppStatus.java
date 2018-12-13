@@ -56,10 +56,18 @@ public class AppStatus extends JFrame {
 			
 			while(rs.next()) {
 				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getFloat(8),rs.getString(9),rs.getString(10));
-				model.addRow(new Object [] {a.getID(),"<html><a href=\"\">"+a.getTitle()+"</a></html>",a.getDate_app(),a.getStatus()});
+				model.addRow(new Object [] {a.getID(),a.getTitle(),a.getDate_app(),a.getStatus()});
 				appl.add(a);
 			}
 			rs = stmt.executeQuery("select * from application where intender_id="+intn.getId()+" and status ='Ongoing';");
+			System.out.println("Showing previous application of "+intn.getName());
+			
+			while(rs.next()) {
+				Application a = new Application(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getFloat(8),rs.getString(9),rs.getString(10));
+				model.addRow(new Object [] {a.getID(),a.getTitle(),a.getDate_app(),a.getStatus()});
+				appl.add(a);
+			}
+			rs = stmt.executeQuery("select * from application where intender_id="+intn.getId()+" and status ='Quotation Recieved';");
 			System.out.println("Showing previous application of "+intn.getName());
 			
 			while(rs.next()) {
@@ -80,22 +88,20 @@ public class AppStatus extends JFrame {
 				System.out.println("The Row selected is : "+row);
 				int col= table.columnAtPoint(e.getPoint());
 				if(col==1) {
-					ViewApplication viewapp = new ViewApplication(intn,appl.get(row));
-					viewapp.setVisible(true);
+					if(appl.get(row).getStatus().equals("Quotation Recieved")) {
+						TechReview tc = new TechReview(intn,appl.get(row));
+						tc.setVisible(true);
+					}
+					else {
+						ViewApplication viewapp = new ViewApplication(intn,appl.get(row));
+						viewapp.setVisible(true);
+					}
 				}
 			}
 		});
 		
 		table.setEnabled(false);
 		
-		JButton btnViewQuotations = new JButton("View Quotations");
-		btnViewQuotations.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TechReview tc = new TechReview();
-				tc.setVisible(true);
-			}
-		});
-		btnViewQuotations.setBounds(48, 322, 187, 25);
-		contentPane.add(btnViewQuotations);
+
 	}
 }
