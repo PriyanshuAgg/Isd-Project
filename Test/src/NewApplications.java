@@ -49,7 +49,7 @@ public class NewApplications extends JFrame {
 			}			
 //			ResultSet r = stmt.executeQuery("select * from intender where id="+a.getIntender_id()+";");
 
-		} catch (SQLException e) {
+		} catch (SQLException e ) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
